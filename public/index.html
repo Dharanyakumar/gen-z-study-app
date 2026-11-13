@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Converter Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+  <h1>Converter Lab</h1>
+  <div class="hud"><span><b id="lvl">1</b>level</span><span><b id="streak">0</b>day streak</span><span><b id="cr">0</b>credits</span><span><b id="today">0</b>today</span></div>
+</header>
+<div class="xp" title="XP to next level"><i id="xpbar"></i></div><p class="xpt" id="xptxt">0 / 100 XP</p>
+<main>
+  <section class="stage">
+    <div class="modes">
+      <button data-m="25" class="on">Focus 25</button><button data-m="50">Deep 50</button><button data-m="5">Break 5</button>
+    </div>
+    <input type="text" id="subject" maxlength="30" placeholder="Subject for this session (e.g. Java)">
+    <div class="dial">
+      <svg viewBox="0 0 300 300" aria-hidden="true">
+        <circle class="sun" cx="150" cy="150" r="104"/>
+        <circle class="track" cx="150" cy="150" r="130"/>
+        <circle id="prog" cx="150" cy="150" r="130"/>
+        <g id="dot"><circle cx="150" cy="20" r="12"/></g>
+      </svg>
+      <div class="time"><b id="time">25:00</b><small id="label">Ready to launch</small></div>
+    </div>
+    <div class="ctl"><button id="go" class="primary">Start</button><button id="reset">Reset</button></div>
+    <label class="test"><input type="checkbox" id="test"> Test mode (timers run 30x faster)</label>
+  </section>
+  <aside>
+  <nav class="tabs"><button data-t="home" class="on">Home</button><button data-t="plan">Plan</button><button data-t="exams">Exams</button><button data-t="cards">Cards</button><button data-t="stats">Stats</button><button data-t="tools">Tools</button></nav>
+  <div class="pane" data-tab="home">
+    <section class="card"><h2>Your solar system</h2><p class="hint">Finish a focus session to add a planet.</p><svg id="sys" viewBox="0 0 320 320"></svg></section>
+    <section class="card"><h2>Daily quests</h2><ul id="quests" class="quests"></ul></section>
+    <section class="card"><h2>This week</h2><div id="week" class="week"></div></section>
+  </div>
+  <div class="pane" data-tab="plan" hidden>
+    <section class="card"><h2>Tasks</h2><div class="add"><input type="text" id="ttext" maxlength="120" placeholder="Task (e.g. Finish ADS record)"><input type="text" id="tsub" maxlength="20" placeholder="Subject"><button id="tadd">Add</button></div><div class="bar"><i id="tbar"></i></div><ul id="tasks"></ul></section>
+    <section class="card"><h2>Notes</h2><div class="add"><input id="ntext" maxlength="500" placeholder="What are you studying?"><button id="nadd">Add note</button></div><ul id="notes"></ul></section>
+  </div>
+  <div class="pane" data-tab="exams" hidden>
+    <section class="card"><h2>Exam countdown</h2><div class="add"><input type="text" id="ename" maxlength="40" placeholder="Exam (e.g. Java CAT-2)"><input type="date" id="edate"><button id="eadd">Add</button></div><ul id="exams"></ul></section>
+  </div>
+  <div class="pane" data-tab="cards" hidden>
+    <section class="card"><h2>Flashcards</h2><div id="card"></div><div class="ctl"><button id="cprev">Previous</button><button id="cnext">Next</button><button id="cshuf">Shuffle</button></div>
+    <div class="add"><input type="text" id="cq" maxlength="200" placeholder="Question"><input type="text" id="ca" maxlength="200" placeholder="Answer"><button id="cadd">Add</button></div></section>
+  </div>
+  <div class="pane" data-tab="stats" hidden>
+    <section class="card"><h2>Time by subject</h2><div id="subs"></div></section>
+    <section class="card"><h2>Badges</h2><div id="badges" class="badges"></div></section>
+  </div>
+  <div class="pane" data-tab="tools" hidden>
+    <section class="card"><h2>Study sounds</h2><div id="amb" class="modes"><button data-k="off" class="on">Off</button><button data-k="rain">Rain</button><button data-k="wind">Wind</button><button data-k="brown">Deep hum</button></div><label class="test">Volume <input type="range" id="vol" min="0" max="1" step=".05" value=".4"></label></section>
+    <section class="card"><h2>SGPA calculator</h2><div id="gp"></div><div class="ctl"><button id="gadd">Add subject</button></div><p class="res" id="sgpa">SGPA: 0.00</p></section>
+  </div>
+</aside>
+</main>
+<div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="app.js"></script>
+<script src="features.js"></script>
+<script src="tools.js"></script>
+<script src="vibes.js"></script>
+<script src="focus.js"></script>
+</body></html>
